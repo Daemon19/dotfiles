@@ -52,7 +52,6 @@ nnoremap <silent> <C-q> :q<CR>
 nnoremap <silent> <C-s> :w<CR>
 
 " telescope.vim bindings
-" Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
