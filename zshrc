@@ -12,7 +12,7 @@ ZSH_BASE=$HOME/.dotfiles
 source $ZSH_BASE/antigen/antigen.zsh
 
 # Import custom aliases
-# source ~/.aliases
+source ~/.aliases
 
 antigen use oh-my-zsh
 
