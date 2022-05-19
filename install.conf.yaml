@@ -1,9 +1,27 @@
+
 - defaults:
     link:
       relink: true
       create: true
 
+- aliases:
+    # Install neovim plugins
+    - &nvim_plugins
+      command: nvim +PlugInstall
+      stdin: true
+      stdout: true
+      stderr: true
+    # Install vim plugins
+    - &vim_plugins
+      command: vim +PlugInstall
+      stdin: true
+      stdout: true
+      stderr: true
+
 - clean: ['~']
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
 
 - link:
     ~/.zshrc: zshrc
@@ -13,4 +31,6 @@
     ~/.p10k.zsh: p10k.zsh
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+  - *nvim_plugins
+  - *vim_plugins
+
