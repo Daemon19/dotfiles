@@ -24,7 +24,9 @@
   - [git submodule update --init --recursive, Installing submodules]
 
 - link:
-    ~/.zshrc: zshrc
+    ~/.zshrc:
+      force: true
+      path: zshrc
     ~/.aliases: aliases
     ~/.vimrc: vimrc
     ~/.config/nvim/init.vim: init.vim
