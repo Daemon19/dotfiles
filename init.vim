@@ -35,7 +35,6 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
-
 nnoremap <silent> <C-q> :q<CR>
 nnoremap <silent> <C-s> :w<CR>
 " ---- End of Key Mappings ----
@@ -63,6 +62,11 @@ set clipboard+=unnamedplus
 
 colorscheme onedark
 syntax on
+
+" Use powershell instead of cmd in windows
+if has('win32')
+    set shell=C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe
+endif
 
 filetype plugin on
 
