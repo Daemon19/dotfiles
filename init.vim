@@ -14,18 +14,27 @@ Plug 'joshdick/onedark.vim'
 call plug#end()
 
 " ---- Key Mappings ----
-inoremap <C-i> <ESC>
-vnoremap <C-i> <ESC>
-
+inoremap <C-j> <esc>
+vnoremap <C-j> <esc>
+tnoremap <C-j> <C-\><C-n>
+tnoremap <C-o> <C-\><C-o>
 nnoremap <C-_> <plug>NERDCommenterToggle
 xnoremap <C-_> <plug>NERDCommenterToggle
 inoremap <C-_> <ESC><plug>NERDCommenterToggle i
 
-" Window navigations
-noremap <C-h> <C-w>h
-noremap <C-j> <C-w>j
-noremap <C-k> <C-w>k
-noremap <C-l> <C-w>l
+" Navigate windows from any mode
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
 
 nnoremap <silent> <C-q> :q<CR>
 nnoremap <silent> <C-s> :w<CR>
@@ -73,6 +82,10 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 " ---- End of NerdTree Configs ----
 
 " ------------ Nerdcommenter configurations ------------
